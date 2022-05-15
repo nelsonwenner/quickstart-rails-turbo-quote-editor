@@ -1,5 +1,5 @@
 <%= form_with(
-  url: quotes_path(quote),
+  model: quote,
   class: "quote form"
 ) do |f| %>
   <% if quote.errors.any? %>
@@ -8,6 +8,10 @@
     </div>
   <% end %>
 
-  <%= f.text_field(:name, autofocus: true, autocomplete: false) %>
-  <%= f.submit(class: "btn btn--secondary") %>
+  <%= f.text_field(:name, autofocus: true, autocomplete: "off") %>
+
+  <%= tag.div do %>
+    <%= link_to("Cancel", quotes_path, class: "btn btn--light") %>
+    <%= f.submit(class: "btn btn--secondary") %>
+  <% end %>
 <% end %>
